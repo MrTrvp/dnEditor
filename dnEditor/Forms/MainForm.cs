@@ -740,6 +740,18 @@ Licenses can be found in the root directory of the project.", "About dnEditor");
             {
                 closeToolStripMenuItem_Click(sender, e);
             }
+            else
+            {
+                TreeNode node = null;
+                if (e.KeyCode == Keys.Up)
+                    node = treeView1.SelectedNode.PrevNode;
+                else if (e.KeyCode == Keys.Down)
+                    node = treeView1.SelectedNode.NextNode;
+
+                if (node == null)
+                    _treeViewHandler.treeView_NodeMouseClick(sender,
+                        new TreeNodeMouseClickEventArgs(node, MouseButtons.Left, 0, 0, 0));
+            }
         }
 
         public void treeView_AfterExpand(object sender, TreeViewEventArgs e)
